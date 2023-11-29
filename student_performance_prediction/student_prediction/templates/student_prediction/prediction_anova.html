@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
+</head>
+<style>
+    body {
+        background: rgb(2,0,36);
+        background: -moz-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        background: -webkit-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        /* Remove default margin to ensure full-width header and footer */
+        padding: 0;
+        /* Remove default padding */
+    }
+
+    /* Header styles */
+    header {
+        background-color: #333;
+        padding: 2px 0;
+        text-align: center;
+        width: 100%;
+    }
+    header h1 a{
+        color: #fff;
+        text-decoration: none;
+    }
+    header h1 a:hover{
+        color:red;
+    }
+
+    nav {
+        background: red;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    nav li a {
+        color: white;
+
+    }
+
+    /* Card styles */
+    .container {
+        display: flex;
+        {% comment %} flex-wrap: wrap; {% endcomment %}
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width:100%;
+        {% comment %} background-color: red; {% endcomment %}
+        margin-top:5em;
+        /* Set container height to full viewport height */
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        /* Add a border to the card */
+        width: 300px;
+        margin: 20px;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #fffcf2;
+        display: inline-block;
+        vertical-align: top;
+        /* Align cards to the top of the container */
+        transition: transform 0.2s;
+        /* Add a smooth hover effect */
+    }
+
+    .card img {
+        width: 300px; /* Set a specific width for the images */
+        height: 270px; /* Maintain aspect ratio */
+        border-radius: 5px;
+    }
+    
+
+    .card h5 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    .card p {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        color: #023047; 
+    }
+
+    .card-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .card-button:hover {
+        background-color: red;
+    }
+
+
+    /* Footer styles */
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 0px 0px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        /* Stick to the bottom of the page */
+        width: 100%;
+    }
+
+    /* Customize your CSS as needed */
+</style>
+
+<body>
+    <header>
+        <h1><a href="{% url 'base_page' %}">Student Performance Prediction</a></h1>
+    </header>
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+                <img src="{% static 'images/reading.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Parental Education VS Reading Score</h5>
+                    <p class="card-text">Is there any significant difference between Parental Education and reading scores ?</p>
+                    <a href="{% url 'student_prediction:reading_scores_vs_parental_education' %}" class="card-button">Result</a>
+                </div>
+            </div>
+        <div class="card" style="width: 18rem;">
+                <img src="{% static 'images/writing.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Parental Education VS Writing Score</h5>
+                    <p class="card-text">Is there any significant difference between Parental Education and writing scores ?</p>
+                    <a href="{% url 'student_prediction:writing_scores_vs_parental_education' %}" class="card-button">Result</a>
+                </div>
+            </div>
+        <div class="card" style="width: 18rem;">
+                <img src="{% static 'images/math.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Parental Education VS Math Score</h5>
+                    <p class="card-text">Is there any significant difference between Parental Education and math scores ?</p>
+                    <a href="{% url 'student_prediction:math_scores_vs_parental_education' %}" class="card-button">Result</a>
+                </div>
+            </div>
+            {% comment %} {% block content %}{% endblock %} {% endcomment %}
+        </div>
+        <footer>
+            <p>&copy; 2023 Student Performance Prediction</p>
+        </footer>
+</body>
+
+</html>

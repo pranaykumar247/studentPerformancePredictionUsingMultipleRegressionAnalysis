@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+</head>
+<style>
+    body {
+        background: rgb(2,0,36);
+        background: -moz-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        background: -webkit-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #333;
+        padding: 2px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    header h1 a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    header h1 a:hover {
+        color: red;
+    }
+
+    nav {
+        background: red;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    nav li a {
+        color: white;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        margin-top: 2em;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        width: auto; /* Allow the card to adjust its width dynamically */
+        max-width: 800px; /* Set a maximum width to avoid excessive width */
+        margin: 20px;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #fffcf2;
+        display: inline-block;
+        vertical-align: top;
+        transition: transform 0.2s;
+    }
+
+    .card img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .card h3 {
+        font-size: 1.5rem;
+        margin-top: 10px;
+        text-decoration: underline;
+    }
+
+    .card-text {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+
+    .card-text p {
+        display: table-row;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .card-text p:last-child {
+        border-bottom: none;
+    }
+
+    .card-text p > span {
+        display: table-cell;
+        padding: 5px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        margin-top: 10px;
+        text-decoration: underline;
+    }
+
+    .card-result {
+        font-weight: bold;
+        color: red;
+        display: block;
+    }
+
+    .card-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .card-button:hover {
+        background-color: black;
+    }
+
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        position: absolute;
+        bottom: -22em;
+        width: 100%;
+    }
+</style>
+<body>
+    <header>
+        <h1><a href="{% url 'base_page' %}">Student Performance Prediction</a></h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <img src="{% static 'images/result.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">T-Test Result: <span>{{ test_name }}</span></h3>
+                <div class="card-text">
+                    <p><span><strong>T-statistic:</strong></span> {{ t_test_result.statistic|floatformat:2 }}</p>
+                    <p><span><strong>P-value:</strong></span> {{ t_test_result.pvalue|floatformat:10 }}</p>
+                    <p><span><strong>Female Mean Score: </strong></span> {{ female_mean|floatformat:2 }}</p>
+                    <p><span><strong>Male Mean Score:</strong></span> {{ male_mean|floatformat:2 }}</p>
+                    <p><span><strong>H0:</strong></span> {{ null_hypothesis }}</p>
+                    <p><span><strong>H1:</strong></span> {{ alternative_hypothesis }}</p>
+                    <p><span><strong>Hypothesis Result:</strong></span> <strong>{{ hypothesis_result }}</strong></p>
+                </div>
+                <a href="{% url 'student_prediction:prediction_t_test' %}" class="card-button">Back to Prediction</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Student Performance Prediction</p>
+    </footer>
+</body>
+</html>

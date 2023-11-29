@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <!-- Add this to your HTML template -->
+
+</head>
+<style>
+    body {
+        background: rgb(2,0,36);
+        background: -moz-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        background: -webkit-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1);
+        font-family: Arial, sans-serif;
+        margin: 0; /* Remove default margin to ensure full-width header and footer */
+        padding: 0; /* Remove default padding */
+    }
+
+    /* Header styles */
+    header {
+        background-color: #333;
+        {% comment %} color: #fff; {% endcomment %}
+        padding: 2px 0;
+        text-align: center;
+    }
+    header h1 a{
+        color: #fff;
+        text-decoration: none;
+    }
+    header h1 a:hover{
+        color:red;
+    }
+
+    /* Card styles */
+    .container {
+        display: flex;
+        {% comment %} flex-wrap: wrap; {% endcomment %}
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width:100%;
+        {% comment %} background-color: red; {% endcomment %}
+        margin-top:2em;
+        /* Set container height to full viewport height */
+    }
+.card {
+    border: 1px solid #ccc; /* Add a border to the card */
+    width: 300px;
+    margin: 20px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    display: inline-block; /* Make cards display inline */
+    vertical-align: top; /* Align cards to the top of the container */
+    transition: transform 0.2s; /* Add a smooth hover effect */
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.card h5 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+} 
+
+ .card-button:hover {
+    background-color: red;
+} 
+
+
+    /* Footer styles */
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 0px 0;
+        text-align: center;
+        position: absolute;
+        bottom: -20em; /* Stick to the bottom of the page */
+        width: 100%;
+    }
+
+    /* Customize your CSS as needed */
+
+</style>
+<body>
+    <header>
+        <h1><a href="{% url 'student_prediction:prediction' %}">Score Prediction</a></h1>
+        {% comment %} <nav>
+            <ul>
+                <li><a href="{% url 'student_prediction:prediction' %}">Predictions1</a></li>
+                <li><a href="{% url 'student_prediction2:prediction' %}">Predictions2</a></li>
+                <li><a href="{% url 'student_prediction2:prediction' %}">Predictions2</a></li>
+            </ul>
+        </nav> {% endcomment %}
+    </header>
+    <div class="container">
+        <div class ="form-scroll-container">
+        <div class="form-container">
+            <h1 class="form-heading">Predict Writing Score</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.gender.id_for_label }}">Gender</label>
+                    {{ form.gender }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.race_ethnicity.id_for_label }}">Race or Ethnicity</label>
+                    {{ form.race_ethnicity }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.parental_level_of_education.id_for_label }}">Parental Level of Education</label>
+                    {{ form.parental_level_of_education }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.lunch.id_for_label }}">Lunch Type</label>
+                    {{ form.lunch }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.test_preparation_course.id_for_label }}">Test Preparation Course</label>
+                    {{ form.test_preparation_course }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.math_score.id_for_label }}">Math Score</label>
+                    {{ form.math_score }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.reading_score.id_for_label }}">Reading Score</label>
+                    {{ form.reading_score }}
+                </div>
+                <button type="submit" class="btn-submit">Predict</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Student Performance Prediction</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    
+</body>
+</html> {% endcomment %}

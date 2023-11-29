@@ -1,0 +1,23 @@
+/* static/css/styles.css */
+/* Add your CSS rules here */
+body {
+    background-color: #00b4d8;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Customize your CSS as needed */

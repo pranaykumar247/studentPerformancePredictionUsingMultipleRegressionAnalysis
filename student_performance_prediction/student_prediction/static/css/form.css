@@ -1,0 +1,65 @@
+/* static/css/style.css */
+.form-scroll-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+   
+    height: 400px; /* Set a fixed height for scrolling */
+    overflow-y: fixed; /* Enable vertical scrolling when content overflows */
+}
+
+/* Rest of your CSS styles for form elements remain the same */
+    
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    background-color: rgb(194, 191, 191)
+}
+
+.form-heading {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+select,
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: red;
+}

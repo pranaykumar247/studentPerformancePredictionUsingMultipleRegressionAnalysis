@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Performance Prediction</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
+    <!-- Add this to your HTML template -->
+  </head>
+  <style>
+        body {
+            background: rgb(2,0,36);
+            background: -moz-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+            background: -webkit-linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 7%, rgba(87,87,214,1) 53%, rgba(0,212,255,1) 86%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1);
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default margin to ensure full-width header and footer */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            {% comment %} color: #fff; {% endcomment %}
+            padding: 2px 0;
+            text-align: center;
+        }
+        header h1 a{
+            color: #fff;
+            text-decoration: none;
+        }
+        header h1 a:hover{
+            color:red;
+        }
+        /* Card styles */
+        .container {
+            display: flex;
+            {% comment %} flex-wrap: wrap; {% endcomment %}
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            width:100%;
+            {% comment %} background-color: red; {% endcomment %}
+            margin-top:2em;
+            /* Set container height to full viewport height */
+        }       
+        
+    /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 0px 0;
+            text-align: center;
+            position: absolute;
+            bottom: -7em; /* Stick to the bottom of the page */
+            width: 100%;
+        }
+
+  </style>
+  <body>
+    <header>
+      <h1>
+        <a href="{% url 'student_prediction2:prediction' %}"
+          >Performance Prediction</a
+        >
+      </h1>
+    </header>
+    <div class="container">
+      <div class="form-scroll-container">
+        <div class="form-container">
+          <h1 class="form-heading">Predict Performance</h1>
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="{{ form.hours_studied.id_for_label }}"
+                >Hour Studied</label
+              >
+              {{ form.hours_studied }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.previous_scores.id_for_label }}"
+                >Previous Scores</label
+              >
+              {{ form.previous_scores }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.extracurricular_activities.id_for_label }}"
+                >Extra Curricular Activities</label
+              >
+              {{ form.extracurricular_activities }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.sleep_hours.id_for_label }}"
+                >Sleep Hours
+              </label>
+              {{ form.sleep_hours }}
+            </div>
+            <div class="form-group">
+              <label
+                for="{{ form.sample_question_papers_practiced.id_for_label }}"
+                >Sample Questions Practiced</label
+              >
+              {{ form.sample_question_papers_practiced }}
+            </div>
+            <button type="submit" class="btn-submit">Predict</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2023 Student Performance Prediction</p>
+    </footer>
+  </body>
+</html>
